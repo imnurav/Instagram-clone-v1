@@ -33,7 +33,7 @@ export default function Header() {
           <HomeIcon className=" hidden md:inline-flex h-6 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out" />
           <PlusCircleIcon className="h-6 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out" />
           <img
-            src="https://lh3.googleusercontent.com/a/AEdFTp7FSGsYBPQMIVo6zGoG3CfV6VKSSb9Q9-5HN6J-cDY=s288-p-rw-no"
+            src="https://lh3.googleusercontent.com/a/AEdFTp6F9WUgGjBXULI4WMLwby0Ys4d78RogPaf7Tt9N=s288-p-rw-no"
             alt=""
             className="h-10 rounded-full cursor-pointer"
           />
