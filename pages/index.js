@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Feed from "./component/Feed";
 import Header from "./component/Header";
-import UploadModal from "./component/uploadModal";
+import UploadModal from "./component/UploadModal";
 export default function Home() {
   return (
     <div className="bg-gray-50 min-h-screen">
