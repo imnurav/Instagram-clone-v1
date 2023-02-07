@@ -1,6 +1,12 @@
 import { SearchIcon, PlusCircleIcon } from "@heroicons/react/outline";
 import { HomeIcon } from "@heroicons/react/solid";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { useRecoilState } from "recoil";
+import { modalState } from "@/atom/modalAtom";
 export default function Header() {
+  const { data:session } = useSession();
+  const [open, setOpen] = useRecoilState(modalState);
+  console.log(open)
   return (
     <div className="shadow-sm border-b sticky top-0 bg-white z-3">
       <div className="flex items-center justify-between max-w-6xl mx-4 xl:mx-auto">
@@ -31,12 +37,22 @@ export default function Header() {
         </div>
         <div className="flex space-x-4 items-center">
           <HomeIcon className=" hidden md:inline-flex h-6 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out" />
-          <PlusCircleIcon className="h-6 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out" />
-          <img
-            src="https://avatars.githubusercontent.com/u/56426091"
-            alt=""
-            className="h-10 rounded-full cursor-pointer"
-          />
+          {session ? (
+            <>
+              <PlusCircleIcon
+                onClick={() => setOpen(true)}
+                className="h-6 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out"
+              />
+              <img
+                onClick={signOut}
+                src={session.user.image}
+                alt=""
+                className="h-10 rounded-full cursor-pointer"
+              />
+            </>
+          ) : (
+            <button onClick={signIn}>Sign in</button>
+          )}
         </div>
       </div>
     </div>
