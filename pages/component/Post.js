@@ -5,9 +5,11 @@ import {
   EmojiHappyIcon,
   HeartIcon,
 } from "@heroicons/react/outline";
+import { useSession } from "next-auth/react";
 import React from "react";
 
 const Post = ({ username, image, userImg, caption, id }) => {
+  const { data: session } = useSession();
   return (
     <div className="bg-white my-7 border rounded">
       {/* post header */}
@@ -21,30 +23,35 @@ const Post = ({ username, image, userImg, caption, id }) => {
         <DotsHorizontalIcon className="h-5" />
       </div>
       {/* post image */}
-      <img className="object-cover w-full" src={image} alt="" />
+      <img className="object-cover " src={image} alt="" style={{height:"400px",width:"100%"}} />
       {/* post buttons */}
-      <div className=" flex justify-between px-4 pt-4">
-        <div className=" flex space-x-4">
-          <HeartIcon className="btn" />
-          <ChatIcon className="btn" />
+      {session && (
+        <div className=" flex justify-between px-4 pt-4">
+          <div className=" flex space-x-4">
+            <HeartIcon className="btn" />
+            <ChatIcon className="btn" />
+          </div>
+          <BookmarkIcon className="btn" />
         </div>
-        <BookmarkIcon className="btn" />
-      </div>
+      )}
       {/* post comments */}
+
       <p className="p-5 truncate">
         <span className="font-bold mr-2">{username}</span>
         {caption}
+        {/* post input box */}
       </p>
-      {/* post input box */}
-      <form action="" className="flex items-center p-4">
-        <EmojiHappyIcon className="h-7" />
-        <input
-          type="text"
-          placeholder="Enter your comments.."
-          className="border-none flex-1 focus:ring-0"
-        />
-        <button className="text-blue-400 font-bold">Post</button>
-      </form>
+      {session && (
+        <form className="flex items-center p-4">
+          <EmojiHappyIcon className="h-7" />
+          <input
+            type="text"
+            placeholder="Enter your comments.."
+            className="border-none flex-1 focus:ring-0"
+          />
+          <button className="text-blue-400 font-bold">Post</button>
+        </form>
+      )}
     </div>
   );
 };
