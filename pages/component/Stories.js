@@ -14,7 +14,7 @@ export default function Stories() {
       id: i,
     }));
     setStoryUser(storyUsers);
-    console.log(storyUser);
+    // console.log(storyUser);
   }, []);
   return (
     <div className="flex space-x-2 p-6 bg-white mt-8 border-gray-200 border overflow-x-scroll rounded-sm scrollbar-none cursor-pointer">

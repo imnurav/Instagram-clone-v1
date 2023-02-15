@@ -9,7 +9,7 @@ import {
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
-import { db,storage } from "@/firebase";
+import { db, storage } from "@/firebase";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { modalState } from "@/atom/modalAtom";
 import { useSession } from "next-auth/react";
